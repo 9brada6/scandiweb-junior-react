@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
 const StoreApolloClient = new ApolloClient({
-  uri: window.GraphQlFetchServer,
+  uri: "http://localhost:4000",
   cache: new InMemoryCache(),
 });
 
