@@ -1,0 +1,42 @@
+.Product__AttributeWrapper {
+  margin-bottom: 35px;
+}
+
+.Product__AttributeTitle {
+  font-size: 1.125rem;
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.Product__AttributeSelectorWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.Product__AttributeItemBtn {
+  min-height: 40px;
+  min-width: 50px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  appearance: none;
+  line-height: 1;
+  font-size: 1.2rem;
+  transition: outline 250ms ease;
+  cursor: pointer;
+  display: block;
+  border: 1px solid black;
+}
+
+.Product__AttributeItemBtn--Swatch {
+  text-shadow: white 0px 0px 10px;
+}
+
+.Product__AttributeItemBtn--Swatch:hover, .Product__AttributeItemBtn--Swatch:focus-visible {
+  outline: 3px solid rgba(0,0,0,0.5);
+}
+
+.Product_AddToCartBtn {
+  max-width: 100%;
+  min-width: 300px;
+}
