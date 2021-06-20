@@ -1,8 +1,8 @@
 import react from "react";
 import StoreApolloClient, { ALL_PRODUCTS } from "graphql/GraphQLQueries";
-import { PriceFormatContext, CartContext } from "helpers/contexts";
+import { PriceFormatContext, CartContext, SiteNotificationsContext } from "helpers/contexts";
 import { prettifyPrice } from "helpers/currencyHelpers";
-import ProductAttribute from "./ProductAttribute/ProductAttribute";
+import ProductAttribute from "components/ProductAttribute/ProductAttribute";
 import "./Product.css";
 
 import ImageGallery from "react-image-gallery";
@@ -65,6 +65,7 @@ class Product extends react.Component {
 
   handleAddItemToCart() {
     this.props.addItemToCart(this.product, this.getAttributeObject());
+    this.props.siteNotifications.showAddToCartNotification();
   }
 
   getAttributeObject() {
@@ -100,6 +101,7 @@ class Product extends react.Component {
     const attributes = product.attributes.map((attr) => {
       return (
         <ProductAttribute
+          bemBaseClass="ProductAttribute"
           key={attr.id}
           attribute={attr}
           selected={this.state[attr.id]}
@@ -155,11 +157,16 @@ class ProductWithContext extends react.Component {
         {(cartContext) => (
           <PriceFormatContext.Consumer>
             {(currencyContext) => (
-              <Product
-                {...this.props}
-                addItemToCart={cartContext.addItemToCart}
-                currencyContext={currencyContext.currency}
-              />
+              <SiteNotificationsContext.Consumer>
+                {(siteNotifications) => (
+                  <Product
+                    {...this.props}
+                    addItemToCart={cartContext.addItemToCart}
+                    currencyContext={currencyContext.currency}
+                    siteNotifications={siteNotifications}
+                  />
+                )}
+              </SiteNotificationsContext.Consumer>
             )}
           </PriceFormatContext.Consumer>
         )}

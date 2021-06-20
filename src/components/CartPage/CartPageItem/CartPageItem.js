@@ -1,20 +1,10 @@
 import react from "react";
-import SwatchAttribute from "./SwatchAttribute/SwatchAttribute";
-import TextAttribute from "./TextAttribute/TextAttribute";
+import ProductAttribute from "components/ProductAttribute/ProductAttribute";
 import { CartContext, PriceFormatContext } from "helpers/contexts";
 import { getProductPrettifiedPrice } from "helpers/currencyHelpers";
 import "./CartPageItem.css";
 
 class CartPageItem extends react.Component {
-  constructor(props) {
-    super(props);
-
-    this.attributeControllers = {
-      swatch: SwatchAttribute,
-      text: TextAttribute,
-    };
-  }
-
   decreaseAmount(item) {
     this.props.cartContext.modifyItemAmount(item.product, item.attributes, -1);
   }
@@ -29,8 +19,15 @@ class CartPageItem extends react.Component {
     const itemImage = item.product.gallery[0];
 
     const attributes = item.product.attributes.map((attr) => {
-      const ProductAttribute = this.attributeControllers[attr.type];
-      return <ProductAttribute key={attr.id} attribute={attr} selected={item.attributes[attr.id]} />;
+      return (
+        <ProductAttribute
+          bemBaseClass="CartPageItemAttribute"
+          displayTitle={false}
+          key={attr.id}
+          attribute={attr}
+          selected={item.attributes[attr.id]}
+        />
+      );
     });
 
     return (

@@ -1,18 +1,12 @@
 import react from "react";
 import { getProductPrettifiedPrice, calculateCartTotal } from "helpers/currencyHelpers";
-import SwatchAttr from "./SwatchAttr/SwatchAttr";
-import TextAttr from "./TextAttr/TextAttr";
+import ProductAttribute from "components/ProductAttribute/ProductAttribute";
 import "./NavbarCart.css";
 import ScrollWrapper from "react-perfect-scrollbar";
 
 class NavbarCart extends react.Component {
   constructor(props) {
     super(props);
-
-    this.attributeViews = {
-      swatch: SwatchAttr,
-      text: TextAttr,
-    };
 
     this.decreaseAmount = this.decreaseAmount.bind(this);
     this.increaseAmount = this.increaseAmount.bind(this);
@@ -41,9 +35,17 @@ class NavbarCart extends react.Component {
           <div className="NavbarCart__ItemPrice">{getProductPrettifiedPrice(item.product, this.props.currency)}</div>
 
           <div className="NavbarCart__ItemAttributes">
-            {item.product.attributes.map((attrs) => {
-              const AttributeDisplay = this.attributeViews[attrs.type];
-              return <AttributeDisplay key={attrs.id} item={item} attrId={attrs.id} />;
+            {item.product.attributes.map((attr) => {
+              return (
+                <ProductAttribute
+                  bemBaseClass="NavbarCartAttr"
+                  disableInactive={true}
+                  displayTitle={false}
+                  key={attr.id}
+                  attribute={attr}
+                  selected={item.attributes[attr.id]}
+                />
+              );
             })}
           </div>
         </div>
@@ -81,7 +83,7 @@ class NavbarCart extends react.Component {
 
     return (
       <div className={"NavbarCart" + additionalHiddenClass} tabIndex="0">
-        <ScrollWrapper className="NavbarCart__ItemsScrollWrapper">
+        <ScrollWrapper className="NavbarCart__ItemsScrollWrapper" options={{ wheelPropagation: false }}>
           <div className="NavbarCart__TitleWrapper">
             <span className="NavbarCart__Title">My Bag</span>
             <span className="NavbarCart__TitleAdditionalDescription">{titleDescription}</span>

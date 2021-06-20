@@ -26,9 +26,8 @@ body, html, button {
   font-variant-numeric: lining-nums;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.Store {
+  position: relative;
 }
 
 .Container {
@@ -70,7 +69,6 @@ code {
 
 .Btn[disabled] {
   opacity: 0.7;
-  pointer-events: none;
 }
 
 .Btn--Success {

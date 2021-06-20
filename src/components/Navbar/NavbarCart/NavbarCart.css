@@ -52,36 +52,48 @@
 
 .NavbarCart__ItemPrice {
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-.NavbarCart__AttrBtn {
+.NavbarCartAttr {
+  margin-bottom: 0.4rem;
+}
+
+.NavbarCartAttr:last-child {
+  margin-bottom: 0;
+}
+
+.NavbarCartAttr__ItemBtn {
   padding: 0.25rem;
   line-height: 1;
   margin-right: 5px;
   margin-bottom: 5px;
   line-height: 1;
+  cursor:not-allowed;
   font-size: 0.875rem;
 }
 
-.NavbarCart__AttrBtn:last-child {
+.NavbarCartAttr__ItemBtn:focus-visible {
+  outline: 2px solid #161616;
+}
+
+.NavbarCartAttr__ItemBtn:not( .NavbarCartAttr__ItemBtn--Selected):hover {
+  background-color: white;
+  color: #161616;
+  border-color: #161616;
+}
+
+.NavbarCartAttr__ItemBtn:last-child {
   margin-right: 0;
 }
 
-.NavbarCart__AttrBtn--Swatch {
+.NavbarCartAttr__ItemBtn--Swatch {
   width: 24px;
   height: 24px;
 }
 
 .NavbarCart__ItemAttributes {
   margin-top: auto;
-}
-
-.NavbarCart__AttrBtnsWrapper {
-  margin-bottom: 0.4rem;
-}
-
-.NavbarCart__AttrBtnsWrapper:last-child {
-  margin-bottom: 0;
 }
 
 .NavbarCart__ItemAmountSection {

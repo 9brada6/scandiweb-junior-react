@@ -6,6 +6,7 @@ import Product from "./Product/Product";
 import CartPage from "./CartPage/CartPage";
 import Cart from "./Cart/Cart";
 import CartOverlay from "./CartOverlay/CartOverlay";
+import SiteNotifications from "components/SiteNotifications/SiteNotifications";
 
 class Store extends react.Component {
   constructor(props) {
@@ -44,17 +45,19 @@ class Store extends react.Component {
   render() {
     return (
       <div className="Store">
-        <Cart>
-          <Navbar
-            page={this.state.page}
-            onChangePage={this.handleChangePage}
-            handleChangePage={this.handleChangePage}
-          />
-          <CartOverlay>
-            {this.displayMainPage()}
-            <Footer />
-          </CartOverlay>
-        </Cart>
+        <SiteNotifications>
+          <Cart>
+            <Navbar
+              page={this.state.page}
+              onChangePage={this.handleChangePage}
+              handleChangePage={this.handleChangePage}
+            />
+            <CartOverlay>
+              {this.displayMainPage()}
+              <Footer />
+            </CartOverlay>
+          </Cart>
+        </SiteNotifications>
       </div>
     );
   }

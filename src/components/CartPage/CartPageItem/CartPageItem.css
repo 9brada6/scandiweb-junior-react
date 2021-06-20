@@ -27,28 +27,28 @@
   margin-top: auto;
 }
 
-.CartPageItem__AttributeItems + .CartPageItem__AttributeItems {
+.CartPageItemAttribute + .CartPageItemAttribute {
   margin-top: 6px;
 }
 
-.CartPageItem__AttributeItems {
+.CartPageItemAttribute__BtnWrapper {
   display: flex;
   flex-wrap: wrap;
 }
 
-.CartPageItem__AttributeItemBtn {
+.CartPageItemAttribute__ItemBtn {
   min-height: 40px;
   min-width: 50px;
   margin-top: 8px;
   margin-right: 8px;
-  -webkit-appearance: none;
-  appearance: none;
   line-height: 1;
   font-size: 1.2rem;
-  transition: outline 250ms ease;
-  cursor: pointer;
-  display: block;
   border: 1px solid black;
+
+}
+
+.CartPageItemAttribute__ItemBtn:focus-visible {
+  outline: 2px solid rgba(0,0,0,0.5);
 }
 
 .CartPageItem_ItemAmountWrapper {

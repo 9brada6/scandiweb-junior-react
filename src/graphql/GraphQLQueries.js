@@ -1,7 +1,9 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client";
 
+const uri = process.env.NODE_ENV === "production" ? "https://junior-endpoint.herokuapp.com/" : "http://localhost:4000";
+
 const StoreApolloClient = new ApolloClient({
-  uri: "http://localhost:4000",
+  uri: uri,
   cache: new InMemoryCache(),
 });
 
